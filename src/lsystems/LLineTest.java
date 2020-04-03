@@ -66,6 +66,39 @@ public class LLineTest {
 	}
 	
 	@Test
+	public void testB_Aprocess() throws LSystemSymbolException, LSystemLengthException {
+		char[] test = {'B'};
+		Set<LRule> rules = new HashSet<LRule>();
+		rules.add(new B_A());
+		LLine line = new LLine(test, rules);
+		line.process();
+		assertEquals("Expected output A", "A", line.toString());
+		
+	}
+	
+	@Test
+	public void testA_BCprocess() throws LSystemSymbolException, LSystemLengthException {
+		char[] test = {'A'};
+		Set<LRule> rules = new HashSet<LRule>();
+		rules.add(new A_BC());
+		LLine line = new LLine(test, rules);
+		line.process();
+		assertEquals("Expected output BC", "BC", line.toString());
+		
+	}
+	
+	@Test
+	public void testC_Bprocess() throws LSystemSymbolException, LSystemLengthException {
+		char[] test = {'C'};
+		Set<LRule> rules = new HashSet<LRule>();
+		rules.add(new C_B());
+		LLine line = new LLine(test, rules);
+		line.process();
+		assertEquals("Expected output B", "B", line.toString());
+		
+	}
+	
+	@Test
 	public void testLSystemLengthException() {
 		char[] test = {'A'};
 		Set<LRule> rules = new HashSet<LRule>();
